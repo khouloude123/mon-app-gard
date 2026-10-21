@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'activite.dart'; // On importe la liste
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
   @override
@@ -55,7 +57,52 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color(0xFF5A9BD5),
         child: const Icon(Icons.add, color: Colors.white),
       ),
-      body: const Center(child: Text('Liste des activités à venir')),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "BONJOUR !",
+              style: TextStyle(color: Colors.grey, fontSize: 12),
+            ),
+            const Text(
+              "Quelle activité aujourd'hui ?",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            Expanded(
+              child: ListView.builder(
+                itemCount: activites.length,
+                itemBuilder: (context, index) {
+                  final a = activites[index];
+                  return Card(
+                    margin: const EdgeInsets.only(bottom: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.blue.shade50,
+                        child: Text(
+                          a['icone'],
+                          style: const TextStyle(fontSize: 22),
+                        ),
+                      ),
+                      title: Text(
+                        a['titre'],
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(a['description']),
+                      trailing: const Icon(Icons.chevron_right),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
