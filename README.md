@@ -1,17 +1,22 @@
-# ma_garderie
+# 📱 Ma Garderie
 
-A new Flutter project.
+Application mobile Flutter pour une garderie d'enfants.
 
-## Getting Started
+## ✨ Fonctionnalités
+- Splash Screen avec transition automatique (3 secondes)
+- Liste des activités (icônes, titres, descriptions)
+- Drawer de navigation (Accueil, Activités, À propos)
+- Interactions (Snackbars au clic sur le FAB, la liste et le Drawer)
 
-This project is a starting point for a Flutter application.
+## 🛠️ Technologies utilisées
+- Flutter 3.x
+- Dart
+- Git / GitHub
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Installation
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone https://github.com/khouloude123/mon-app-gard.git
+cd mon-app-gard
+flutter pub get
+flutter run
