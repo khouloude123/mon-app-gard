@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'activite.dart'; // On importe la liste
+import 'activite.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +10,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // Fonction pour afficher un message (Snackbar)
+  void _showSnack(String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,23 +43,32 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: const Icon(Icons.home),
               title: const Text('Accueil'),
-              onTap: () => Navigator.pop(context),
+              onTap: () {
+                Navigator.pop(context);
+                _showSnack('Accueil sélectionné');
+              },
             ),
             ListTile(
               leading: const Icon(Icons.toys),
               title: const Text('Activités'),
-              onTap: () => Navigator.pop(context),
+              onTap: () {
+                Navigator.pop(context);
+                _showSnack('Activités sélectionnées');
+              },
             ),
             ListTile(
               leading: const Icon(Icons.info),
               title: const Text('À propos'),
-              onTap: () => Navigator.pop(context),
+              onTap: () {
+                Navigator.pop(context);
+                _showSnack('À propos sélectionné');
+              },
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => _showSnack('Nouvelle activité'), // Interaction FAB
         backgroundColor: const Color(0xFF5A9BD5),
         child: const Icon(Icons.add, color: Colors.white),
       ),
@@ -95,6 +110,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                       subtitle: Text(a['description']),
                       trailing: const Icon(Icons.chevron_right),
+                      // Interaction sur le clic d'une activité
+                      onTap: () => _showSnack(a['titre']),
                     ),
                   );
                 },
